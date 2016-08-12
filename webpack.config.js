@@ -1,43 +1,49 @@
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: path.join(__dirname, '/app/index.html'),
-  filename: 'index.html',
-  inject: 'body'
-})
+const webpack = require('webpack');
+const path = require('path');
+
+const PATHS = {
+  app: './app/index.js',
+  html: './app/index.html',
+  dist: path.join(__dirname, 'dist')
+};
 
 module.exports = {
-  devtool: 'eval',
-  entry: [
-    './app/index.js'
-  ],
+  entry: {
+    javascript: PATHS.app,
+    html: PATHS.html
+  },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: PATHS.dist,
+    publicPath: '/',
     filename: 'bundle.js'
   },
-  plugins: [
-    HtmlWebpackPluginConfig
-  ],
+  devServer: {
+    contentBase: PATHS.dist
+  },
   module: {
     loaders: [
       {
-      test: /\.js$/,
-      loaders: ['babel-loader'],
-      include: path.join(__dirname, 'app'),
-      exclude: /(node_modules|bower_components)/
-    },
-    {
-      test: /\.css$/,
-      loaders: ['style', 'css'],
-    },
-    {
-      test: /\.scss$/,
-      loaders: ['style', 'css', 'sass'],
-    },
-    {
-      test: /\.(woff|woff2|ttf|svg|eot)/,
-      loader: 'url?limit=100000',
-    }
+        test: /\.html$/,
+        loader: "file?name=[name].[ext]"
+      },
+      {
+        test: /\.(js|jsx)/,
+        loaders: ["react-hot", "babel-loader"],
+        include: path.join(__dirname, 'app'),
+        exclude: /(node_modules|bower_components)/
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
+      },
+      {
+        test: /\.(woff|woff2|ttf|svg|eot)/,
+        loader: 'url?limit=100000',
+      }
     ]
   },
   resolve: {
