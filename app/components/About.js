@@ -6,10 +6,12 @@ import { Button } from 'react-bootstrap';
 class About extends Component {
   render() {
     return (
-      <div className="about">
-        <h2>About Page</h2>
+      <div>
+        <h2>Technologies</h2>
+        <h3>Built with React, Node, Express, Bootstrap, Webpack, Bootstrap, Sass</h3>
+        <br/><br/>
         <Link to="/">
-          <Button bsStyle="default" bsSize="small">Home</Button>
+          <Button bsStyle="info" bsSize="large">Home</Button>
         </Link>
       </div>
     );

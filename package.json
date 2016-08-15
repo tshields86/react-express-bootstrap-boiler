@@ -1,7 +1,7 @@
 {
-  "name": "react-express-boostrap-boiler",
+  "name": "react-express-bootstrap-boiler",
   "version": "0.1.0",
-  "description": "React Node Express Boostrap Boilerplate",
+  "description": "React Webpack Boilerplate",
   "main": "index.js",
   "scripts": {
     "production": "webpack -p",

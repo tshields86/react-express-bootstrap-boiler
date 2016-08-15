@@ -1,1 +1,1 @@
-# React Node Express Bootstrap Boilerplate
+# react-express-bootstrap-boiler
