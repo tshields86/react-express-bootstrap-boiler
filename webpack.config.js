@@ -8,13 +8,12 @@ const PATHS = {
 };
 
 module.exports = {
+  devtool: 'eval',
   entry: {
-    javascript: PATHS.app,
-    html: PATHS.html
+    javascript: PATHS.app
   },
   output: {
     path: PATHS.dist,
-    publicPath: '/',
     filename: 'bundle.js'
   },
   devServer: {
